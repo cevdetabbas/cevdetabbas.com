@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# Check if the hostname is provided
+if [ -z "$1" ]; then
+    echo "Usage: setproxy <hostname>"
+    exit 1
+fi
+
+host=$1
+key_path="/root/zEnaktars/${host}Enaktar.key"
+
+# Attempt to connect with the 'opc' user
+output=$(ssh -o ConnectTimeout=2 -i "$key_path" -D 1080 opc@"$host".cevdetabbas.com 2>&1)
+
+# Check for the "Please login as the user 'ubuntu'" warning
+if echo "$output" | grep -q "Please login as the user \"ubuntu\""; then
+    echo "Detected message to use 'ubuntu' user. Retrying..."
+    ssh -i "$key_path" -D 1080 ubuntu@"$host".cevdetabbas.com
+else
+    echo "$output"
+fi

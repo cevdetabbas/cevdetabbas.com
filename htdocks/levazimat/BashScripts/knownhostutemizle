@@ -1,0 +1,2 @@
+#!/bin/bash
+sudo echo "" > /root/.ssh/known_hosts

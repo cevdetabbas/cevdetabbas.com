@@ -1,0 +1,36 @@
+apt update -y && apt upgrade -y
+
+wget https://gitlab.com/bmcgonag/docker_installs/-/raw/main/install_docker_nproxyman.sh
+chmod +x install_docker_nproxyman.sh
+./install_docker_nproxyman.sh
+
+
+#81 -> nginx
+#8080 -> guacamole
+#8188 -> remotely
+#4533 -> navidrome
+#9000 -> portainer
+#9090 -> cockpit
+
+#docker ps
+
+#Google TLS Certificate
+#EAB Key ID
+#f4c67b4bdcabbb2439f2162ecfd85724
+
+#EAB HMAC Key
+#YlSKWEUAY2X7qGnme4HFIqdzTnn_n6ryzgLQpfVMqC9I5z6jDVBag1vuIkNxeDwdvaIvtwEFmh_hTiThOEZHUg
+
+#API Token
+#SDAzZ0tfWHF4Q0FoX1pEQ2pwNXljUQ==
+
+
+#cevotheabbas -> blind and bridge    very very secure
+
+#cevocevdetabbas -> risk and trust   very secure
+
+#mr.ozpay -> guacamole and apps
+
+#bridge e cockpit socket ekle her saatin ilk dakikasi acik biras sadece
+#bir nginx aslinda hepsi birden olustur
+

@@ -1,0 +1,7 @@
+#!/bin/bash
+
+UN=$(ls /mnt/c/Users | grep -E 'cevo|tm')
+
+scp -i /root/zEnaktars/$1Enaktar.key $2 opc@$1.cevdetabbas.com:/home/opc/
+
+scp -i /root/zEnaktars/$1Enaktar.key $2 ubuntu@$1.cevdetabbas.com:/home/ubuntu/

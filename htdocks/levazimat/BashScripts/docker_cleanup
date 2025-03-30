@@ -1,0 +1,142 @@
+#!/bin/bash
+
+echo "### Docker Cleanup & Uninstallation Script ###"
+
+# Function to confirm action
+confirm_action() {
+    read -p "Are you sure you want to $1? [y/N]: " confirm
+    if [[ "$confirm" =~ ^[Yy]$ ]]; then
+        return 0
+    else
+        echo "Skipped: $1"
+        return 1
+    fi
+}
+
+# Function to safely stop and remove containers
+clean_containers() {
+    if docker ps -a | grep -q .; then
+        echo -e "\n### Containers:"
+        docker ps -a
+        if confirm_action "stop and remove all containers"; then
+            echo "Stopping all containers..."
+            docker stop $(docker ps -q)
+            echo "Removing all containers..."
+            docker rm $(docker ps -a -q)
+        fi
+    else
+        echo "No containers found."
+    fi
+}
+
+# Function to remove images
+clean_images() {
+    if docker images | grep -q .; then
+        echo -e "\n### Images:"
+        docker images
+        if confirm_action "remove all images"; then
+            echo "Removing all images..."
+            docker rmi $(docker images -q)
+        fi
+    else
+        echo "No images found."
+    fi
+}
+
+# Function to remove volumes
+clean_volumes() {
+    if docker volume ls | grep -q .; then
+        echo -e "\n### Volumes:"
+        docker volume ls
+        if confirm_action "remove all volumes"; then
+            echo "Removing all volumes..."
+            docker volume rm $(docker volume ls -q)
+        fi
+    else
+        echo "No volumes found."
+    fi
+}
+
+# Function to remove networks
+clean_networks() {
+    if docker network ls | grep -v "bridge\|host\|none" | grep -q .; then
+        echo -e "\n### Networks:"
+        docker network ls | grep -v "bridge\|host\|none"
+        if confirm_action "remove all custom networks"; then
+            echo "Removing all custom networks..."
+            docker network rm $(docker network ls | grep -v "bridge\|host\|none" | awk '/ / { print $1 }')
+        fi
+    else
+        echo "No custom networks found."
+    fi
+}
+
+# Function to prune unused Docker data
+prune_docker() {
+    if confirm_action "prune all unused Docker data"; then
+        echo "Pruning unused Docker data..."
+        docker system prune -a --volumes -f
+    fi
+}
+
+# Cleanup execution
+clean_containers
+clean_images
+clean_volumes
+clean_networks
+prune_docker
+
+# Function to completely remove Docker
+uninstall_docker() {
+    echo -e "\n### Docker Uninstallation ###"
+    read -p "Do you want to completely remove Docker from your system? (y/N): " confirm
+    if [[ "$confirm" != "y" && "$confirm" != "Y" ]]; then
+        echo "Docker uninstallation skipped."
+        exit 0
+    fi
+
+    echo "Stopping all running Docker containers..."
+    docker ps -q | xargs -r docker stop
+
+    echo "Removing all Docker containers..."
+    docker ps -aq | xargs -r docker rm -f
+
+    echo "Removing all Docker images..."
+    docker images -q | xargs -r docker rmi -f
+
+    echo "Removing all Docker volumes..."
+    docker volume ls -q | xargs -r docker volume rm
+
+    echo "Removing all Docker networks (except the default ones)..."
+    docker network ls --filter "type=custom" -q | xargs -r docker network rm
+
+    echo "Removing Docker configuration and state files..."
+    sudo rm -rf /var/lib/docker
+    sudo rm -rf /var/lib/containerd
+
+    echo "Uninstalling Docker packages..."
+    if command -v apt-get &>/dev/null; then
+        sudo apt-get purge -y docker-engine docker docker.io docker-ce docker-ce-cli
+        sudo apt-get autoremove -y --purge
+    elif command -v yum &>/dev/null; then
+        sudo yum remove -y docker-engine docker docker.io docker-ce docker-ce-cli
+    elif command -v dnf &>/dev/null; then
+        sudo dnf remove -y docker-engine docker docker.io docker-ce docker-ce-cli
+    elif command -v pacman &>/dev/null; then
+        sudo pacman -Rns --noconfirm docker
+    elif command -v snap &>/dev/null; then
+        sudo snap remove docker
+    fi
+
+    echo "Cleaning up residual Docker files..."
+    sudo rm -rf /etc/docker
+    sudo rm -f /etc/apparmor.d/docker
+    sudo groupdel docker 2>/dev/null
+
+    echo -e "\nDocker has been completely removed from your system."
+}
+
+# Ask user if they want to uninstall Docker
+uninstall_docker
+
+echo -e "\nCleanup and uninstallation complete. Have a great day!"

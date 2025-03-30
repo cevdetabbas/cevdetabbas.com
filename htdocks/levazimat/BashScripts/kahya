@@ -1,0 +1,102 @@
+#!/bin/bash
+
+# Script to enable systemd (systemctl) on WSL for AlmaLinux and copy directories from OneDrive
+
+# ###############################################################################
+# 1 ########## Enable systemd in AlmaLinux on WSL ###############################
+# ###############################################################################
+
+# Check if we're on AlmaLinux
+if [ -f /etc/os-release ]; then
+    . /etc/os-release
+    if [[ "$ID" == "almalinux" ]]; then
+        echo "AlmaLinux detected."
+
+        # Enable systemd in WSL by modifying the /etc/wsl.conf file
+        echo "Checking if systemd is enabled in WSL..."
+
+        # Check if /etc/wsl.conf exists, if not, create it
+        if [ ! -f /etc/wsl.conf ]; then
+            echo "Creating /etc/wsl.conf..."
+            sudo touch /etc/wsl.conf
+        fi
+
+        # Check if systemd=true is already in /etc/wsl.conf
+        if grep -q "systemd=true" /etc/wsl.conf; then
+            echo "systemd is already enabled in /etc/wsl.conf. No changes needed."
+        else
+            # Add systemd=true to /etc/wsl.conf to enable systemd
+            echo "[boot]" | sudo tee -a /etc/wsl.conf > /dev/null
+            echo "systemd=true" | sudo tee -a /etc/wsl.conf > /dev/null
+            echo "Added systemd=true to /etc/wsl.conf."
+
+            # Restart WSL to apply the changes
+            echo "Restarting WSL to apply changes..."
+            wsl --shutdown
+            echo "WSL has been restarted. Please open a new WSL terminal to check systemd."
+        fi
+    else
+        echo "This script is intended for AlmaLinux only."
+    fi
+else
+    echo "/etc/os-release not found. Unable to determine OS."
+fi
+
+# Determine the current user directory based on the username 'cevo' or 'tm'
+UN=$(ls /mnt/c/Users | grep -E 'cevo|tm')
+
+# ###############################################################################
+# 2 ########## Removing old directories and files if they exist ################
+# ###############################################################################
+echo "Removing old directories and files..."
+
+# First, handle directories and keys
+rm -rf /root/zEnaktars
+rm -rf /root/zKilits
+rm -rf /root/*Enaktar.key
+
+# ###############################################################################
+# 3 ########## Copying directories from OneDrive ###############################
+# ###############################################################################
+echo "Copying directories from OneDrive..."
+
+cp -r /mnt/c/Users/$UN/OneDrive/Desktop/zEnaktars /root/
+cp -r /mnt/c/Users/$UN/OneDrive/Desktop/zKilits /root/
+
+# ###############################################################################
+# 4 ########## Set file permissions for directories and keys ##################
+# ###############################################################################
+echo "Setting file permissions for directories and keys..."
+
+chmod -R 400 /root/zEnaktars/*
+chmod -R 400 /root/zKilits/*
+
+# ###############################################################################
+# 5 ########## Removing old scripts and copying new ones #######################
+# ###############################################################################
+# List of scripts to remove and copy
+scripts=("baglan" "knownhostutemizle" "kahya" "gonder" "setproxy" "docker_cleanup")
+
+# Remove old scripts from /bin using the list
+for script in "${scripts[@]}"; do
+    echo "Removing old script: /bin/$script"
+    rm -f /bin/$script
+done
+
+# Copy scripts from OneDrive to /bin and set executable permissions
+echo "Copying scripts from OneDrive..."
+
+for script in "${scripts[@]}"; do
+    echo "Processing script: $script"
+    
+    # Copy the script from OneDrive to /bin
+    cp -r /mnt/c/Users/$UN/OneDrive/Documents/BashScripts/$script /bin/
+
+    # Set executable permissions if not already set
+    if [ ! -x "/bin/$script" ]; then
+        echo "Setting executable permission for $script"
+        chmod +x /bin/$script
+    fi
+done
+
+echo "Script execution complete."

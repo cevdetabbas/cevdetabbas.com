@@ -1,0 +1,86 @@
+# user ubuntu uzerinden gidilecek
+sudo passwd ubuntu # bunu unutma
+
+sudo apt update -y && sudo apt upgrade -y 
+sudo apt install xorg -y 
+sudo apt install openbox -y 
+sudo apt install slim -y 
+sudo apt install iptables -y  
+sudo apt install xrdp -y  
+sudo apt install vim -y 
+
+
+sudo sed -i '/-A INPUT -p tcp -m state --state NEW -m tcp --dport 22 -j ACCEPT/a -A INPUT -p tcp -m state --state NEW -m tcp --dport 3389 -j ACCEPT' /etc/iptables/rules.v4
+
+sudo iptables-restore < /etc/iptables/rules.v4 
+mkdir -p ~/.config/openbox 
+touch ~/.config/openbox/autostart 
+sudo systemctl enable xrdp --now
+
+sudo reboot
+
+sudo apt install nitrogen -y && echo "nitrogen --restore " >> ~/.config/openbox/autostart
+
+wget https://fedoraproject.org/w/uploads/2/27/F36-01-day.jpg
+nitrogen --set-zoom-fill ./F36-01-day.jpg  # DO IT ON SESSION OPENED WINDOW
+sudo nitrogen --save
+sudo echo "nitrogen --restore " >> ~/.config/openbox/autostart
+
+
+sudo apt install plank -y # dock for openbox ctrl ile sag tusa tiklayinca preferences aciliyo
+echo "plank &" >> ~/.config/openbox/autostart 
+
+sudo apt install compton -y # dock zoom in dalgasi
+sudo echo "compton &" >> ~/.config/openbox/autostart 
+
+# trayer bunun biraz ellenmesi lazim
+sudo apt install -y trayer  # bu systray calisan system tray app lerini gosterecek lazim yani
+sudo echo "trayer --edge bottom --align right --widthtype request --height 40 --transparent true --alpha 0 --tint 0x333333 --iconspacing 4 --padding 4 &" >> ~/.config/openbox/autostart 
+
+# apps to try 
+sudo apt install caffeine -y
+caffeine-indicator &
+
+# tailscale
+
+# nomachine
+wget https://download.nomachine.com/download/8.14/Linux/nomachine_8.14.2_1_amd64.deb
+sudo dpkg -i nomachine_8.14.2_1_amd64.deb
+
+# anydesk
+sudo wget -qO - https://keys.anydesk.com/repos/DEB-GPG-KEY | apt-key add -
+sudo echo "deb http://deb.anydesk.com/ all main" > /etc/apt/sources.list.d/anydesk-stable.list
+sudo apt update -y
+sudo apt install anydesk -y
+
+# jetbrain toolbox
+wget https://download.jetbrains.com/toolbox/jetbrains-toolbox-2.5.1.34629.tar.gz
+tar xvf jetbrains-toolbox-2.5.1.34629.tar.gz
+cd jetbrains-toolbox-2.5.1.34629.tar.gz
+chmod 777 jetbrains-toolbox
+./jetbrains-toolbox
+
+# installation of google chrome 
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo dpkg -i google-chrome-stable_current_amd64.deb
+sudo apt-get install -f # this will handle the dependencies
+google-chrome
+
+# passwordless sudo
+wget https://raw.githubusercontent.com/cevdetabbas/BashScripts/refs/heads/main/setup_passwordless_sudo
+sudo chmod 777 setup_passwordless_sudo
+sudo ./setup_passwordless_sudo
+
+
+
+
+
+
+
+sudo add-apt-repository ppa:teejee2008/foss
+sudo apt update -y
+sudo apt install conky-manager2 -y
+
+
+
+

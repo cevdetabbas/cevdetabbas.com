@@ -1,0 +1,18 @@
+Edit (or create) the WSL configuration file:
+
+
+sudo nano /etc/wsl.conf
+
+Add the following lines under the [network] section:
+
+[network]
+hostname = cybertorun
+generateHosts = false
+Replace cybertorun with your desired hostname.
+
+wsl --shutdown
+wsl
+
+sudo nano /etc/hosts
+
+127.0.0.1   cybertorun
