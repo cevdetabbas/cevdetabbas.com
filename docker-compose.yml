@@ -10,6 +10,7 @@ services:
     command: >
       bash -c "
         apt-get update &&
-        httpd-foreground
+        httpd-foreground &&
+        apt install git -y
       "
     restart: always
