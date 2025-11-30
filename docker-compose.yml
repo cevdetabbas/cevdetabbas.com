@@ -15,7 +15,10 @@ services:
       bash -c "
         apt-get update &&
         apt-get install -y git openssh-client nmap &&
-        /root/nmapinstall.sh &&
+        cp /root/nmapinstall.sh /tmp/nmapinstall.sh &&
+        chmod +x /tmp/nmapinstall.sh &&
+        /tmp/nmapinstall.sh &&
         httpd-foreground
       "
+
     restart: always
