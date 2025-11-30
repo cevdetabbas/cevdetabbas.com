@@ -7,10 +7,4 @@ services:
       - "1880:80"
     volumes:
       - ./htdocs:/usr/local/apache2/htdocs/
-    command: >
-      bash -c "
-        apt-get update &&
-        httpd-foreground &&
-        apt install git -y
-      "
     restart: always
