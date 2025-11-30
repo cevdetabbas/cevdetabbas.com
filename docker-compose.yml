@@ -7,13 +7,15 @@ services:
       - "1880:80"
     volumes:
       - ./htdocs:/usr/local/apache2/htdocs/
-      - ./id_ed25519:/root/.ssh/id_ed25519:ro
-      - ./id_ed25519.pub:/root/.ssh/id_ed25519.pub:ro
+    environment:
+      - GIT_TOKEN=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
     command: >
       bash -c "
         apt-get update &&
-        apt-get install -y git openssh-client  &&
-        httpd-foreground
+        apt-get install -y git &&
+        while true; do
+          git -C /usr/local/apache2 pull https://$GIT_TOKEN@github.com/username/repository.git;
+          sleep 60;
+        done
       "
-
     restart: always
