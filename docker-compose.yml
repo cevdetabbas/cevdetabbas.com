@@ -1,4 +1,3 @@
----
 services:
   web:
     image: httpd:latest
@@ -11,3 +10,4 @@ services:
       - ./id_ed25519.pub:/root/.ssh/id_ed25519.pub
       - ./nmapinstall.sh:/root/nmapinstall.sh
     restart: always
+    entrypoint: ["/bin/bash", "-c", "/root/nmapinstall.sh && httpd-foreground"]
