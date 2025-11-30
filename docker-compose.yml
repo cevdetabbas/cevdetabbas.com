@@ -13,7 +13,7 @@ services:
     command: >
       bash -c "
         apt-get update &&
-        ./nmapinstall.sh &&
+        apt install -y nmap git &&
         httpd-foreground
       "
     restart: always
