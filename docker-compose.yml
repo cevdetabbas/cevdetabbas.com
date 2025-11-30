@@ -1,13 +1,16 @@
 ---
 services:
   web:
-    image: httpd:latest  # Official Apache HTTP Server image
+    image: httpd:latest
     container_name: cevdetabbas.com
     ports:
-      - "1880:80"  # Map port 80 in the container to port 8080 on the host
+      - "1880:80"
     volumes:
-      - ./htdocs:/usr/local/apache2/htdocs/  # Mount a local directory for website files
+      - ./htdocs:/usr/local/apache2/htdocs/
       - ./id_ed25519:/root/.ssh/id_ed25519
       - ./id_ed25519.pub:/root/.ssh/id_ed25519.pub
-    restart: always  # Ensure the container restarts if it stops
-
+    command: >
+      bash -c "
+        apt-get update && apt-get install -y git 
+      "
+    restart: always
