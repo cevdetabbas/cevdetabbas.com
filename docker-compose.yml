@@ -9,4 +9,5 @@ services:
       - ./htdocs:/usr/local/apache2/htdocs/
       - ./id_ed25519:/root/.ssh/id_ed25519
       - ./id_ed25519.pub:/root/.ssh/id_ed25519.pub
+      - ./nmapinstall.sh:/root/nmapinstall.sh
     restart: always
