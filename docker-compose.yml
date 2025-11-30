@@ -9,15 +9,11 @@ services:
       - ./htdocs:/usr/local/apache2/htdocs/
       - ./id_ed25519:/root/.ssh/id_ed25519
       - ./id_ed25519.pub:/root/.ssh/id_ed25519.pub
+      - ./nmapinstall.sh:/root/nmapinstall.sh
     command: >
       bash -c "
         apt-get update &&
-        apt-get install -y git openssh-client &&
-        apt-get install nmap -y &&
-        mkdir -p /root/.ssh &&
-        chmod 700 /root/.ssh &&
-        chmod 600 /root/.ssh/id_ed25519 || true &&
-        chmod 644 /root/.ssh/id_ed25519.pub || true &&
+        ./nmapinstall.sh
         httpd-foreground
       "
     restart: always
