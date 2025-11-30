@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Resume - Mustafa Ozpay</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="assets/img/favicon.png" rel="icon">
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="assets/css/style.css" rel="stylesheet">
+
+    <style>
+        body {
+          background: #000;
+          color: #fff;
+          overflow-x: hidden;
+        }
+
+        /* MATRIX BACKGROUND */
+        #matrix-resume {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          z-index: -1;
+        }
+
+        /* MAIN CONTAINER */
+        .resume-container {
+          max-width: 900px;
+          margin: 0 auto;
+          padding: 120px 20px 60px;
+          text-align: center;
+        }
+
+        .resume-item {
+          text-align: left;
+          margin-left: auto;
+          margin-right: auto;
+          margin-bottom: 25px;
+        }
+
+        /* SECTION TITLES */
+        .resume-title {
+          font-size: 22px;
+          margin-top: 35px;
+          margin-bottom: 15px;
+          font-weight: 600;
+          text-transform: uppercase;
+          color: #ffffff !important;
+          background: transparent !important;
+          border: none !important;
+          text-align: center;
+        }
+
+        /* BULLET POINTS TAMAMEN KAPALI */
+        ul,
+        ul li {
+          list-style: none !important;
+          list-style-type: none !important;
+          padding-left: 0 !important;
+          margin-left: 0 !important;
+          background: transparent !important;
+        }
+
+        ul li::before {
+          content: none !important;
+          display: none !important;
+        }
+
+        /* Fade-in effect */
+        .fade-in {
+          opacity: 0;
+          animation: fadeInUp 1s ease-out 0.3s forwards;
+        }
+
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(25px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        a {
+          color: #66e0ff;
+        }
+
+        a:hover {
+          color: #99f0ff;
+        }
+    </style>
+</head>
+
+<body>
+
+<canvas id="matrix-resume"></canvas>
+
+<!-- ======= Header (AYNI INDEX GİBİ) ======= -->
+<header id="header" class="fixed-top">
+    <div class="container-fluid d-flex justify-content-between align-items-center">
+
+        <h1 class="logo me-auto me-lg-0"><a href="index.html">Cevo</a></h1>
+
+        <nav id="navbar" class="navbar order-last order-lg-0">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a class="active" href="resume.html">Resume</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="portfolio.html">RBCB</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav>
+
+        <div class="header-social-links">
+            <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+            <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+        </div>
+
+    </div>
+</header>
+
+<main id="main">
+
+    <section id="resume" class="resume fade-in">
+        <div class="resume-container">
+
+            <!-- TOP NAME -->
+            <h2 style="font-size: 38px; font-weight: 700; margin-bottom: 10px;">Mustafa Ozpay</h2>
+            <p>Cyber Security Analyst · SOC · Threat Hunting · Incident Response</p>
+
+            <p style="margin-top: 10px;">
+                San Antonio, TX • 832-896-1434 •
+                <a href="mailto:mr.ozpay@gmail.com">mr.ozpay@gmail.com</a> •
+                <a href="https://www.linkedin.com/in/mustafa-ozpay" target="_blank">LinkedIn</a> •
+                <a href="https://www.youtube.com/@mustafaozpay9688" target="_blank">YouTube</a>
+            </p>
+
+            <!-- SUMMARY -->
+            <h4 class="resume-title">Professional Summary</h4>
+            <div class="resume-item">
+                <p>
+                    SOC Analyst with 2+ years of blue-team experience and 5 years in IT operations. Improved detection capabilities
+                    and reduced false positives by 20%. Skilled in SIEM tuning, log analysis, threat-intel enrichment, and vulnerability
+                    management.
+                </p>
+                <p>
+                    Hands-on with Splunk, QRadar, CrowdStrike, and Elastic/ELK; experienced with AWS and Oracle Cloud. Strong
+                    scripting and forensic skills across Linux systems and virtual platforms. Built SOP/playbooks that cut
+                    phishing triage time by 25% and automated report preparation to save 30% weekly.
+                </p>
+            </div>
+
+            <!-- CERTIFICATIONS -->
+            <h4 class="resume-title">Certifications</h4>
+            <div class="resume-item">
+                <ul>
+                    <li>CompTIA Security+ (2023)</li>
+                    <li>Red Hat Certified System Administrator (RHCSA) (2022)</li>
+                    <li>Certified Ethical Hacker (CEH) – In Progress</li>
+                </ul>
+            </div>
+
+            <!-- SKILLS -->
+            <h4 class="resume-title">Technical Skills Summary</h4>
+            <div class="resume-item">
+                <ul>
+                    <li><strong>SIEM & Detection:</strong> Splunk, QRadar, Elastic/ELK, SOAR, Threat Hunting, IOC Analysis, Incident Response</li>
+                    <li><strong>Threat Intelligence:</strong> Any.run, OSINT, Shodan, Talos, VirusTotal, IntelX, HaveIBeenPwned</li>
+                    <li><strong>Endpoint/XDR:</strong> CrowdStrike Falcon, EDR/MDR/XDR, Sysmon, YARA</li>
+                    <li><strong>Network & Security:</strong> ACLs, DNS & HTTP analysis, Data Encryption, Nessus, Nmap, Protocol Analyzers, Wireshark, IPS</li>
+                    <li><strong>Cloud & Virtualization:</strong> AWS, Oracle Cloud, Docker, KVM, Hyper-V, LXC/LXD, VirtualBox, VMware</li>
+                    <li><strong>Scripting & Automation:</strong> Bash, PowerShell, Python (automation, reporting, IP whitelisting/blacklisting), Linux CLI, Red Hat CLI, JavaScript, PHP</li>
+                    <li><strong>Frameworks:</strong> MITRE ATT&CK, NIST 800-61, Cyber Kill Chain, ISO 27001, CIA Triad, DRP, DLP</li>
+                    <li><strong>Platforms:</strong> Ubuntu, Red Hat, Kali Linux, Parrot OS, Windows (Event Logs, PKI)</li>
+                </ul>
+            </div>
+
+            <!-- EXPERIENCE -->
+            <h4 class="resume-title">Professional Experience</h4>
+
+            <div class="resume-item">
+                <h5>SOC Analyst – Level 1</h5>
+                <h6>HPS Security Operations Center — San Antonio, TX (Sep 2023–Present)</h6>
+                <ul>
+                    <li>Monitored and triaged 100+ weekly alerts across Splunk/QRadar/CrowdStrike; tuned correlation rules to reduce false positives by 20%.</li>
+                    <li>Investigated phishing/spoofing incidents via Zimbra and SIEM; enriched with IntelX and HaveIBeenPwned to identify credential exposure.</li>
+                    <li>Conducted proactive threat hunts using VirusTotal, Shodan, and Talos; mapped TTPs to MITRE ATT&CK.</li>
+                    <li>Created SOPs/playbooks for phishing and log correlation, cutting triage time by 25%.</li>
+                    <li>Automated recurring reports in Python, reducing prep time by 30% and increasing report consistency.</li>
+                    <li>Developed Python automation for IP whitelist/blacklist updates to streamline firewall rule documentation, saving 35% analyst documentation time.</li>
+                </ul>
+            </div>
+
+            <div class="resume-item">
+                <h5>IT Helpdesk / IT Support Specialist</h5>
+                <h6>SST — Houston, TX (Aug 2021–June 2023)</h6>
+                <ul>
+                    <li>Supported IT operations for 100+ staff and devices; maintained ticket SLAs.</li>
+                    <li>Implemented and reviewed firewall ACLs and quarterly access controls.</li>
+                    <li>Led cybersecurity awareness and phishing simulations with measurable engagement increase.</li>
+                </ul>
+            </div>
+
+            <!-- PROJECTS -->
+            <h4 class="resume-title">Projects</h4>
+
+            <div class="resume-item">
+                <h5>Virtual SOC Lab — Offensive/Defensive Simulation</h5>
+                <ul>
+                    <li>Built a lab using PfSense, Security Onion (as EDR), Splunk, and VMware; simulated red/blue scenarios.</li>
+                    <li>Configured ELK aggregation; tuned detections for lateral movement and brute force.</li>
+                </ul>
+            </div>
+
+            <div class="resume-item">
+                <h5>Playbook Automation — MITRE-Driven Escalation Model</h5>
+                <ul>
+                    <li>Developed triage playbooks mapping tactics to MITRE ATT&CK.</li>
+                    <li>Embedded SOAR rules for efficient escalation.</li>
+                </ul>
+            </div>
+
+            <!-- EDUCATION -->
+            <h4 class="resume-title">Education</h4>
+
+            <div class="resume-item">
+                <h5>M.S., Computer Science</h5>
+                <h6>North American University — Houston, TX (May 2023–Aug 2024)</h6>
+                <ul>
+                    <li>Applied DRP principles in simulated outages and ransomware recovery.</li>
+                </ul>
+            </div>
+
+            <div class="resume-item">
+                <h5>B.S., Science Teaching</h5>
+                <h6>Çanakkale Onsekiz Mart University — Çanakkale, Türkiye (2005–2010)</h6>
+                <ul>
+                    <li>Integrated technology into instruction (LMS usage, automation for grading/materials).</li>
+                </ul>
+            </div>
+
+            <!-- CAPSTONE -->
+            <h4 class="resume-title">Capstone Project — Virtual SOC Deployment</h4>
+            <div class="resume-item">
+                <ul>
+                    <li>Designed and deployed a complete SOC lab environment.</li>
+                    <li>Installed and configured PfSense as perimeter firewall with custom ACLs, NAT, and VPN policies.</li>
+                    <li>Installed Splunk forwarders on multiple endpoints to aggregate Windows Event Logs and Sysmon data.</li>
+                    <li>Deployed Security Onion as an open-source EDR for endpoint telemetry and intrusion detection.</li>
+                    <li>Integrated ELK Stack for unified log visualization and correlation.</li>
+                    <li>Simulated red/blue team attack-defense scenarios; validated detection rules for ransomware, brute force, and lateral movement.</li>
+                    <li>Created Python scripts to automate IP whitelist/blacklist updates and firewall documentation, reducing manual work by 35%.</li>
+                </ul>
+            </div>
+
+            <!-- TRAINING -->
+            <h4 class="resume-title">Training</h4>
+            <div class="resume-item">
+                <h5>RangeForce Readiness Program (2024–2025)</h5>
+                <p>Completed 201 hands-on SOC and cybersecurity modules (94h 55m) across multiple domains, achieving an overall 83% completion score.</p>
+                <ul>
+                    <li>SOC Analyst Track: SIEM operations (Splunk – 10 modules, QRadar – 3 modules), threat hunting, phishing detection, vulnerability assessment, ransomware detection, malware analysis, and alert triage.</li>
+                    <li>MITRE ATT&CK TTPs: Applied persistence, execution, privilege escalation, and defense evasion techniques in simulated adversary emulations.</li>
+                    <li>Network Forensics: Conducted packet analysis and intrusion detection using Wireshark, Elastic Security, and firewall policy tuning.</li>
+                    <li>Cloud & EDR: Implemented security monitoring in AWS environments; deployed and configured open-source EDR tools.</li>
+                    <li>Threat Intelligence: Leveraged Shodan, VirusTotal, Talos, and OSINT platforms for IOC enrichment and adversary profiling.</li>
+                    <li>Blue/Red/Purple Team Exercises: Participated in simulated engagements covering reconnaissance, exploitation, and post-exploitation defense.</li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+</main>
+
+<!-- ======= Footer ======= -->
+<footer id="footer">
+    <div class="container">
+        <div class="copyright">
+            &copy; Copyright <strong><span>cevo</span></strong>. All Rights Reserved
+        </div>
+        <div class="credits">
+            Designed by <a href="https://cevdetabbas.com/">cevo</a>
+        </div>
+    </div>
+</footer>
+
+<div id="preloader"></div>
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+<!-- Vendor JS Files -->
+<script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+<script src="assets/vendor/aos/aos.js"></script>
+<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+<script src="assets/vendor/php-email-form/validate.js"></script>
+
+<!-- Template Main JS File -->
+<script src="assets/js/main.js"></script>
+
+<!-- Matrix background script -->
+<script>
+    (function () {
+      const canvas = document.getElementById('matrix-resume');
+      const ctx = canvas.getContext('2d');
+
+      function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+      resize();
+      window.addEventListener('resize', resize);
+
+      const chars = 'アカサタナハマヤラワ0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+      const fontSize = 16;
+      let columns = Math.floor(canvas.width / fontSize);
+      let drops = Array(columns).fill(1);
+
+      function resetDrops() {
+        columns = Math.floor(canvas.width / fontSize);
+        drops = Array(columns).fill(1);
+      }
+      window.addEventListener('resize', resetDrops);
+
+      function draw() {
+        ctx.fillStyle = 'rgba(0,0,0,0.05)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        ctx.fillStyle = '#0F0';
+        ctx.font = fontSize + 'px monospace';
+
+        for (let i = 0; i < drops.length; i++) {
+          const text = chars[Math.floor(Math.random() * chars.length)];
+          ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+          if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+            drops[i] = 0;
+          }
+          drops[i]++;
+        }
+      }
+
+      setInterval(draw, 33);
+    })();
+</script>
+
+</body>
+</html>
