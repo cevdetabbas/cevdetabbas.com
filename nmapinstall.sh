@@ -1,3 +1,3 @@
 #!/bin/bash
-apt install update -y
-apt install -y nmap
+apt-get update -y
+apt-get install -y nmap
