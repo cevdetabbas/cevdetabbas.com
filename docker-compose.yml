@@ -14,7 +14,7 @@ services:
         apt-get update &&
         apt-get install -y git &&
         while true; do
-          git -C /usr/local/apache2 pull https://$GIT_TOKEN@github.com/username/repository.git;
+          git -C /usr/local/apache2 pull https://$GIT_TOKEN@github.com/cevdetabbas/cevdetabbas.com.git;
           sleep 60;
         done
       "
