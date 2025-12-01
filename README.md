@@ -1,4 +1,4 @@
-# Apache2 Docker Project
+# cevdetabbas.com Docker Project
 
 This repository contains:
 - Website files for cevdetabbas.com
@@ -6,3 +6,4 @@ This repository contains:
 - Apache httpd container setup
 
 ## Quick Start
+
